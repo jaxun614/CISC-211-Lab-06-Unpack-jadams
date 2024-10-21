@@ -14,7 +14,7 @@
 .type nameStr,%gnu_unique_object
     
 /*** STUDENTS: Change the next line to your name!  **/
-nameStr: .asciz "Inigo Montoya"  
+nameStr: .asciz "Jackson Adams"  
  
 .align    /* ensure following vars are allocated on word-aligned addresses */
 
@@ -72,7 +72,22 @@ asmFunc:
      * Use it to test the C test code */
     
     /*** STUDENTS: Place your code BELOW this line!!! **************/
-
+    
+    /* r0 contains the given 32b value */
+    
+    /* r1 will be the register that holds the 'a' value */
+    mov r1, r0 /* move the value in r0 into r1, the upper bits will be 1-to-1 */
+    asrs r1, r1, #16 /* shift and sign extend the upper 16 bits to the right 16 bits and set the flags */
+    ldr r3, =a_value /* write the mem address of a_value to r3 */
+    str r1, [r3] /* write the value in r1 to the mem address of a_value */
+    
+    /* r2 will be the register that holds the 'b' value */    
+    mov r2, r0 /* move the value in r0 into r2, the lower bits will be 1-to-1 */
+    lsl r2, r2, #16 /* use a logical shift to the left to clear the upper bits while perserving the lower bits */
+    asrs r2, r2, #16 /* shift and sign extend the upper 16 bits to the right 16 bits and set the flags */
+    ldr r3, =b_value /* write the mem address of b_value to r3 */
+    str r2, [r3] /* write the value in r2 to the mem address of b_value */
+    
     
     /*** STUDENTS: Place your code ABOVE this line!!! **************/
 
@@ -82,6 +97,7 @@ done:
      */
     mov r0,r0 /* these are do-nothing lines to deal with IDE mem display bug */
     mov r0,r0 /* this is a do-nothing line to deal with IDE mem display bug */
+    
 
 screen_shot:    pop {r4-r11,LR}
 

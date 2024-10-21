@@ -59,6 +59,7 @@ static uint8_t uartTxBuffer[MAX_PRINT_LEN] = {0};
 // inputs to the assembly function
 // tc stands for test case
 static uint32_t tc[] = {
+    0x00020003,
     0x80018002, // test case 0: -,-
     0x7EEE7FF0, // test case 1: +,+
     0x00000000, // test case 2: 0,0

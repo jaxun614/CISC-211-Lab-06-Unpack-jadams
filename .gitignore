@@ -41,3 +41,5 @@
 *.s~
 *.swp
 *.DS_Store
+/Lab-06-unp-starter/firmware/Lab-06-unp-starter.X/dist/
+/Lab-06-unp-starter/firmware/Lab-06-unp-starter.X/build/
